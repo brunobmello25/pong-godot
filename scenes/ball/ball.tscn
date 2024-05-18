@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://eq3xcbgfjwqc"]
+[gd_scene load_steps=6 format=3 uid="uid://eq3xcbgfjwqc"]
 
 [ext_resource type="Script" path="res://scenes/ball/ball.gd" id="1_b0b7m"]
 [ext_resource type="Texture2D" uid="uid://scj0xnnlard1" path="res://assets/sprites/ball.png" id="2_gth8j"]
+[ext_resource type="AudioStream" uid="uid://boy8p6t2dyfoa" path="res://assets/sounds/wall-hit.wav" id="3_k7f2i"]
+[ext_resource type="AudioStream" uid="uid://bunruc17tv2n3" path="res://assets/sounds/player-hit.wav" id="3_w5cc7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0qsy"]
 
@@ -17,6 +19,12 @@ shape = SubResource("RectangleShape2D_i0qsy")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="PlayerHitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_w5cc7")
+
+[node name="WallHitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_k7f2i")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
