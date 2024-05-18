@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn6n6eyjwkrkl"]
+[gd_scene load_steps=7 format=3 uid="uid://bn6n6eyjwkrkl"]
 
 [ext_resource type="Texture2D" uid="uid://hwua3eu2xa58" path="res://assets/sprites/purple-field.png" id="1_qbg7k"]
 [ext_resource type="Texture2D" uid="uid://bgic48x84oxdf" path="res://assets/sprites/player.png" id="2_ntn2x"]
 [ext_resource type="PackedScene" uid="uid://b41ajurptsowj" path="res://scenes/player/player.tscn" id="3_diqmk"]
 [ext_resource type="PackedScene" uid="uid://eq3xcbgfjwqc" path="res://scenes/ball/ball.tscn" id="4_ded7g"]
+[ext_resource type="PackedScene" uid="uid://bjl0kf8trjqt2" path="res://scenes/game_manager/game_manager.tscn" id="5_ss6bb"]
+[ext_resource type="PackedScene" uid="uid://gfhaasen2tt7" path="res://scenes/goal/goal.tscn" id="6_08vks"]
 
 [node name="Main" type="Node2D"]
 
@@ -13,7 +15,7 @@ texture = ExtResource("1_qbg7k")
 
 [node name="MiddleLine" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
-scale = Vector2(1, 5.6)
+scale = Vector2(0.25, 5.6)
 texture = ExtResource("2_ntn2x")
 
 [node name="Player1" parent="." instance=ExtResource("3_diqmk")]
@@ -25,3 +27,14 @@ player1 = false
 
 [node name="Ball" parent="." instance=ExtResource("4_ded7g")]
 position = Vector2(640, 360)
+
+[node name="GameManager" parent="." instance=ExtResource("5_ss6bb")]
+
+[node name="Goal1" parent="." instance=ExtResource("6_08vks")]
+position = Vector2(-8, 0)
+
+[node name="Goal2" parent="." instance=ExtResource("6_08vks")]
+position = Vector2(1288, 0)
+
+[connection signal="area_entered" from="Goal1" to="GameManager" method="_on_goal_1_area_entered"]
+[connection signal="area_entered" from="Goal2" to="GameManager" method="_on_goal_2_area_entered"]
