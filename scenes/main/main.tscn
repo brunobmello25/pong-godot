@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn6n6eyjwkrkl"]
+
+[ext_resource type="Texture2D" uid="uid://hwua3eu2xa58" path="res://assets/sprites/purple-field.png" id="1_qbg7k"]
+[ext_resource type="Texture2D" uid="uid://bgic48x84oxdf" path="res://assets/sprites/player.png" id="2_ntn2x"]
+[ext_resource type="PackedScene" uid="uid://b41ajurptsowj" path="res://scenes/player/player.tscn" id="3_diqmk"]
+[ext_resource type="PackedScene" uid="uid://eq3xcbgfjwqc" path="res://scenes/ball/ball.tscn" id="4_ded7g"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Field" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("1_qbg7k")
+
+[node name="MiddleLine" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(1, 5.6)
+texture = ExtResource("2_ntn2x")
+
+[node name="Player1" parent="." instance=ExtResource("3_diqmk")]
+position = Vector2(64, 360)
+
+[node name="Player2" parent="." instance=ExtResource("3_diqmk")]
+position = Vector2(1216, 360)
+player1 = false
+
+[node name="Ball" parent="." instance=ExtResource("4_ded7g")]
+position = Vector2(640, 360)
