@@ -3,6 +3,9 @@ extends StaticBody2D
 @export var player1: bool
 var speed: int = 500
 
+var min_y = 64
+var max_y = 654
+
 
 func _process(delta):
 	move(delta)
@@ -21,4 +24,4 @@ func move(delta: float) -> void:
 
 
 func limit_movement() -> void:
-	position.y = clamp(position.y, 64, 654)
+	position.y = clamp(position.y, min_y, max_y)
