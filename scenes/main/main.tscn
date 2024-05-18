@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn6n6eyjwkrkl"]
+[gd_scene load_steps=9 format=3 uid="uid://bn6n6eyjwkrkl"]
 
 [ext_resource type="Texture2D" uid="uid://hwua3eu2xa58" path="res://assets/sprites/purple-field.png" id="1_qbg7k"]
 [ext_resource type="Texture2D" uid="uid://bgic48x84oxdf" path="res://assets/sprites/player.png" id="2_ntn2x"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://eq3xcbgfjwqc" path="res://scenes/ball/ball.tscn" id="4_ded7g"]
 [ext_resource type="PackedScene" uid="uid://bjl0kf8trjqt2" path="res://scenes/game_manager/game_manager.tscn" id="5_ss6bb"]
 [ext_resource type="PackedScene" uid="uid://gfhaasen2tt7" path="res://scenes/goal/goal.tscn" id="6_08vks"]
+[ext_resource type="FontFile" uid="uid://dy50k3mie40sv" path="res://assets/fonts/PublicPixel-z84yD.ttf" id="7_1p1qy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nrb25"]
+font = ExtResource("7_1p1qy")
+font_size = 32
 
 [node name="Main" type="Node2D"]
 
@@ -35,6 +40,46 @@ position = Vector2(-8, 0)
 
 [node name="Goal2" parent="." instance=ExtResource("6_08vks")]
 position = Vector2(1288, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ScorePanel" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="P1Score" type="Label" parent="UI/ScorePanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 10.0
+offset_right = -85.0
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_nrb25")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2Score" type="Label" parent="UI/ScorePanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 75.0
+offset_top = 10.0
+offset_right = 115.0
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_nrb25")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="Goal1" to="GameManager" method="_on_goal_1_area_entered"]
 [connection signal="area_entered" from="Goal2" to="GameManager" method="_on_goal_2_area_entered"]
